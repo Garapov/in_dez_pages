@@ -8,14 +8,14 @@ export default defineConfig({
     outDir: '../dist',
     emptyOutDir: true
   },
-  plugins: [
-    viteImagemin({
-      gifsicle: { optimizationLevel: 7 },
-      optipng: { optimizationLevel: 7 },
-      mozjpeg: { quality: 75 },
-      svgo: { plugins: [{ removeViewBox: false }] }
-    })
-  ],
+  // plugins: [
+  //   viteImagemin({
+  //     gifsicle: { optimizationLevel: 7 },
+  //     optipng: { optimizationLevel: 7 },
+  //     mozjpeg: { quality: 75 },
+  //     svgo: { plugins: [{ removeViewBox: false }] }
+  //   })
+  // ],
   server: {
     port: 3000,
     open: true
