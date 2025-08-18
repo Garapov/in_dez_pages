@@ -6,6 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
       perView: 4,
       bound: true,
       gap: 20,
+      breakpoints: {
+        1200: {
+          perView: 3,
+        },
+        992: {
+          perView: 2,
+        },
+        768: {
+          perView: 1,
+        },
+      },
     }).mount();
   }
   if (document.querySelector(".new_services.glide")) {
@@ -13,6 +24,17 @@ document.addEventListener("DOMContentLoaded", () => {
       perView: 4,
       bound: true,
       gap: 20,
+      breakpoints: {
+        1200: {
+          perView: 3,
+        },
+        992: {
+          perView: 2,
+        },
+        768: {
+          perView: 1,
+        },
+      },
     }).mount();
   }
   if (document.querySelector(".new_faq")) {
