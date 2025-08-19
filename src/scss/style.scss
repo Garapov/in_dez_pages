@@ -38,7 +38,7 @@ body {
     }
 }
 
-.new_page_banner {
+body .new_page_banner {
     position: relative;
     
     
@@ -150,6 +150,7 @@ body {
         }
     }
     &__bottom_list {
+        all: unset;
         list-style: none;
         padding: 0;
         margin: 0;
@@ -160,6 +161,7 @@ body {
             gap: 16px;
         }
         li {
+            all: unset;
             display: flex;
             align-items: center;
             gap: 16px;
@@ -168,6 +170,8 @@ body {
             line-height: 140%;
             color: #818181;
             &:before {
+                all: unset;
+                position: static;
                 content: "";
                 display: inline-block;
                 min-width: 26px;
@@ -189,7 +193,7 @@ body {
     }
 }
 
-.new_text_with_gallery {
+body .new_text_with_gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     grid-gap: 20px;
@@ -249,6 +253,7 @@ body {
     }
 
     &__left_list {
+        all: unset;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -256,7 +261,9 @@ body {
         flex-direction: column;
         gap: 30px;
         padding-top: 20px;
+        
         li {
+            all: unset;
             display: flex;
             align-items: center;
             gap: 16px;
@@ -274,7 +281,7 @@ body {
     }
 }
 
-.new_why_we {
+body .new_why_we {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -322,7 +329,7 @@ body {
     }
 }
 
-.new_procedures {
+body .new_procedures {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -381,7 +388,7 @@ body {
     }
 }
 
-.new_pricelist {
+body .new_pricelist {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -432,7 +439,7 @@ body {
     }
 }
 
-.new_reviews {
+body .new_reviews {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -636,7 +643,7 @@ body {
     
 }
 
-.portfolio {
+body .portfolio {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -697,7 +704,7 @@ body {
 }
 
 
-.new_services {
+body .new_services {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -799,7 +806,7 @@ body {
 
 
 
-.guarantee-contact {
+body .guarantee-contact {
     margin-bottom: 60px;
     background: #f7f9f8;
     @media all and (min-width: 1025px) {
@@ -851,12 +858,18 @@ body {
         font-weight: 400;
     }
     &__list {
-        list-style: none;
+        list-style: none !important;
         padding: 0;
         margin: 0;
         display: flex;
         flex-direction: column;
         gap: 24px;
+        li {
+            all: unset;
+        }
+        li:before {
+            display: none;
+        }
         &-top {
             display: flex;
             align-items: center;
