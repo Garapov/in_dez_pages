@@ -19,6 +19,9 @@ body {
 .glide * {
     white-space: normal;
 }
+.relative {
+    position: relative;
+}
 
 .roboto-font {
     font-family: "Roboto", sans-serif;
@@ -35,6 +38,158 @@ body {
     @media all and (max-width: 1024px) {
         padding-left: 20px !important;
         padding-right: 20px !important;
+    }
+}
+
+.catalog_opener {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    &__button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 16px;
+        color: #1e1e1e;
+        text-decoration: none;
+        padding: 25px 40px;
+        background-color: #BF2F4D;
+        cursor: pointer;
+        .icon {
+            width: 18px;
+            height: 18px;
+            .opened {
+                display: none;
+            }
+        }
+        &.active .icon .opened {
+            display: block;
+        }
+        &.active .icon .closed {
+            display: none;
+        }
+        .text {
+            font-weight: 700;
+            font-size: 20px;
+            color: #fff;
+        }
+        &:hover {
+            background-color: #72a62a;
+            color: #fff;
+        }
+    }
+    &__menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        box-shadow: 0 4px 40px 0 rgba(0, 0, 0, 0.06);
+        background: #fff;
+        z-index: 1000;
+        display: none;
+        
+        &.active {
+            display: block;
+        }
+    }
+    &__menu_in {
+        padding: 40px;
+        display: grid;
+        grid-template-columns: 316px 1fr;
+        grid-gap: 20px;
+        max-width: 1324px;
+        margin: 0 auto;
+    }
+    &__menu_left {
+        padding-right: 20px;
+        border-right: 1px solid #f4f4f4;
+        ul {
+            list-style: none !important;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        li {}
+        a {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            padding: 10px;
+            
+            .icon {
+                display: block;
+                min-width: 60px;
+                max-width: 60px;
+                font-size: 0;
+            }
+            .text {
+                font-weight: 500;
+                font-size: 16px;
+                color: #424242;
+            }
+            &:hover,
+            &.active {
+                background: #f8f8f8;
+                .text {
+                    font-weight: 700;
+                    color: #72a62a;
+                }
+            }
+        }
+    }
+    &__menu_right_item {
+        max-height: 682px;
+        overflow: auto;
+        display: none;
+        flex-direction: column;
+        gap: 40px;
+        &.active {
+            display: flex;
+        }
+    }
+    &__menu_right_title {
+        font-weight: 700;
+        font-size: 24px;
+        color: #1e1e1e;
+    }
+    &__menu_right_links {
+        display: grid;
+        grid-gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    &__menu_right_link {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        .link {
+            font-weight: 700;
+            font-size: 16px;
+            color: #1e1e1e;
+            text-decoration: none;
+            &:hover {
+                color: #bd2645;
+            }
+        }
+        .sublinks {
+            list-style: none !important;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 0;
+            a {
+                font-weight: 400;
+                font-size: 16px;
+                color: #818181;
+                text-decoration: none;
+                &:hover {
+                    color: #1e1e1e;
+                }
+            } 
+        }
     }
 }
 
