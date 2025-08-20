@@ -142,8 +142,6 @@ body {
         }
     }
     &__menu_right_item {
-        max-height: 682px;
-        overflow: auto;
         display: none;
         flex-direction: column;
         gap: 40px;
@@ -160,6 +158,8 @@ body {
         display: grid;
         grid-gap: 30px;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        max-height: 390px;
+        overflow: auto;
     }
     &__menu_right_link {
         display: flex;
