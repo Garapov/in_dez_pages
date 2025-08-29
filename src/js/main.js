@@ -37,6 +37,24 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     }).mount();
   }
+  if (document.querySelector(".new_specialists.glide")) {
+    window.services_slider = new Glide(".new_specialists.glide", {
+      perView: 4,
+      bound: true,
+      gap: 20,
+      breakpoints: {
+        1200: {
+          perView: 3,
+        },
+        992: {
+          perView: 2,
+        },
+        768: {
+          perView: 1,
+        },
+      },
+    }).mount();
+  }
   if (document.querySelector(".new_faq")) {
     document.querySelectorAll(".new_faq__item").forEach((item) => {
       item.addEventListener("click", () => {

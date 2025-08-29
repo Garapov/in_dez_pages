@@ -41,6 +41,176 @@ body {
     }
 }
 
+// ---- tokens (совпадают с твоей страницей) ----
+$color-text: #1e1e1e;
+$color-muted: #818181;
+$color-green: #72a62a;
+$color-red: #bd2645;
+$color-border: #e9e9e9;
+$radius-s: 6px;
+$radius-m: 8px;
+
+// ---- layout ----
+.new_header {
+  background: #fff;
+  .theme-container { padding-top: 8px; padding-bottom: 12px; }
+
+  // top line
+  &__top {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    column-gap: 24px;
+    color: $color-muted;
+    font-size: 13px;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  &__worktime { .dot { margin: 0 8px; } }
+  &__city {
+    justify-self: start;
+    a { color: $color-green; text-decoration: none; border-bottom: 1px solid transparent; }
+    a:hover { border-color: $color-green; }
+  }
+
+  // main line
+  &__main {
+    display: grid;
+    grid-template-columns:
+      auto            // logo
+      max-content     // catalog
+      1fr             // search (растягивается)
+      auto            // nav
+      auto            // contacts
+      auto;           // badge
+    align-items: center;
+    column-gap: 24px;
+  }
+
+  // logo
+  &__logo img { height: 46px; display: block; }
+
+  // catalog button
+  &__catalog {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: $color-red;
+    color: #fff;
+    border: 0;
+    border-radius: $radius-m;
+    height: 44px;
+    padding: 0 18px 0 16px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: filter .2s ease;
+    &:hover { filter: brightness(0.94); }
+    &:active { filter: brightness(0.9); }
+  }
+  &__catalog_icon {
+    position: relative;
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    background: rgba(255,255,255,.2);
+    &::before, &::after {
+      content: ""; position: absolute; left: 50%; top: 50%;
+      width: 12px; height: 2px; background: #fff; border-radius: 1px;
+      transform-origin: center;
+    }
+    &::before { transform: translate(-50%, -50%) rotate(45deg); }
+    &::after  { transform: translate(-50%, -50%) rotate(-45deg); }
+  }
+
+  // search
+  &__search {
+    position: relative; display: flex; align-items: center; height: 44px;
+    border: 1px solid $color-border; border-radius: $radius-m; background: #fff;
+  }
+  &__search_input {
+    width: 100%; height: 100%;
+    padding: 0 48px 0 16px;
+    border: 0; outline: none;
+    font-size: 16px; color: $color-text;
+    &::placeholder { color: #b1b1b1; }
+  }
+  &__search_btn {
+    position: absolute; right: 10px;
+    width: 32px; height: 32px; border: 0; background: transparent; color: #5a5a5a;
+    border-radius: 50%; cursor: pointer; display: grid; place-items: center;
+    &:hover { background: #f3f3f3; }
+  }
+
+  // nav
+  &__nav { margin-left: 4px; }
+  &__menu {
+    display: flex; align-items: center; gap: 22px; list-style: none; padding: 0; margin: 0;
+  }
+  &__menu_item {
+    a {
+      display: inline-flex; align-items: center; gap: 6px;
+      text-decoration: none; color: $color-text; font-size: 15px; white-space: nowrap;
+    }
+    &--caret a::after {
+      content: ""; width: 6px; height: 6px; border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
+      transform: rotate(45deg); margin-top: 2px; opacity: .85;
+    }
+    a:hover { color: #444; }
+  }
+
+  // contacts
+  &__contacts { display: inline-flex; align-items: center; gap: 16px; }
+  &__email {
+    color: $color-green; font-size: 15px; text-decoration: none; border-bottom: 1px solid transparent;
+    &:hover { border-color: $color-green; }
+  }
+  &__callback {
+    height: 40px; display: inline-flex; align-items: center; justify-content: center;
+    padding: 0 14px; border-radius: $radius-s;
+    border: 1px solid $color-green; color: $color-green; font-size: 15px; text-decoration: none;
+    transition: background .15s ease, color .15s ease;
+    &:hover { background: $color-green; color: #fff; }
+  }
+
+  // badge/emblem
+  &__badge img { height: 46px; display: block; }
+
+  // ------- responsive -------
+  @media (max-width: 1280px) {
+    &__main { column-gap: 18px; }
+    &__menu { gap: 16px; }
+    &__email { display: none; } // чуть уплотняем как в макетах
+  }
+  @media (max-width: 1120px) {
+    &__main {
+      grid-template-columns: auto max-content 1fr auto auto; // прячем значок
+    }
+    &__badge { display: none; }
+    &__menu { gap: 14px; }
+    &__catalog { font-size: 15px; padding: 0 14px; }
+  }
+  @media (max-width: 992px) {
+    &__top { font-size: 12px; }
+    &__main {
+      grid-template-columns: auto 1fr auto; // logo | search | contacts
+      row-gap: 12px;
+    }
+    &__catalog, &__nav { grid-column: 1 / -1; }
+    &__catalog { width: max-content; }
+    &__nav { order: 3; }
+  }
+  @media (max-width: 640px) {
+    .theme-container { padding-left: 16px !important; padding-right: 16px !important; }
+    &__logo img { height: 36px; }
+    &__catalog { height: 40px; }
+    &__search { height: 40px; }
+    &__callback { height: 36px; padding: 0 12px; }
+    &__menu { flex-wrap: wrap; gap: 12px 16px; }
+  }
+}
+
+
+
 .catalog_opener {
     display: inline-flex;
     justify-content: center;
@@ -97,7 +267,7 @@ body {
         display: grid;
         grid-template-columns: 316px 1fr;
         grid-gap: 20px;
-        max-width: 1324px;
+        max-width: 1404px;
         margin: 0 auto;
     }
     &__menu_left {
@@ -111,7 +281,9 @@ body {
             flex-direction: column;
             gap: 10px;
         }
-        li {}
+        li {
+            padding: 0 !important;
+        }
         a {
             display: flex;
             align-items: center;
@@ -157,7 +329,7 @@ body {
     &__menu_right_links {
         display: grid;
         grid-gap: 30px;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
         max-height: 390px;
         overflow: auto;
     }
@@ -180,6 +352,11 @@ body {
             flex-direction: column;
             gap: 10px;
             padding: 0;
+            margin: 0;
+            li {
+                padding: 0;
+                margin: 0;
+            }
             a {
                 font-weight: 400;
                 font-size: 16px;
@@ -841,7 +1018,6 @@ body .portfolio {
         gap: 8px;
         font-size: 14px;
         color: #000;
-        text-decoration: none;
         transition: color 0.3s;
 
         &:hover {
@@ -857,6 +1033,97 @@ body .portfolio {
         transform: translateX(4px);
     }
 }
+
+.new_specialists {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 60px;
+
+  &__title {
+    font-weight: 400;
+    font-size: 35px;
+    color: #1e1e1e;
+    margin: 0;
+}
+
+
+  &__card {
+    background: #FBFBFB;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &-image {
+      width: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        aspect-ratio: 1 / 1;
+      }
+    }
+
+    &-content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      .new_specialists__card-name {
+        font-weight: 700;
+        font-size: 18px;
+        color: #1e1e1e;
+        margin: 0;
+        padding-bottom: 10px;
+      }
+
+      .new_specialists__card-role,
+      .new_specialists__card-exp {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        color: #818181;
+
+        span {
+          font-weight: 500;
+          color: #1e1e1e;
+        }
+      }
+    }
+  }
+
+  &__footer {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__nav {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: none;
+        font-size: 18px;
+        cursor: pointer;
+        background: #f5f5f5;
+        transition: all 0.3s ease;
+        &:hover {
+            background: #72a62a;
+            color: #fff;
+        }
+    }
+
+    &__all {
+        margin-left: auto;
+        font-size: 16px;
+        color: #1e1e1e;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
 
 
 body .new_services {
