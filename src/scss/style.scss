@@ -51,22 +51,25 @@ $radius-s: 6px;
 $radius-m: 8px;
 
 // ---- layout ----
-.new_header {
+body .new_header {
   background: #fff;
   .theme-container { padding-top: 8px; padding-bottom: 12px; }
 
   // top line
   &__top {
-    display: grid;
-    grid-template-columns: 1fr auto;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    column-gap: 24px;
     color: $color-muted;
     font-size: 13px;
     line-height: 1.35;
-    margin-bottom: 8px;
+    margin-bottom: 27px;
   }
-  &__worktime { .dot { margin: 0 8px; } }
+    &__worktime { 
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
   &__city {
     justify-self: start;
     a { color: $color-green; text-decoration: none; border-bottom: 1px solid transparent; }
@@ -80,9 +83,8 @@ $radius-m: 8px;
       auto            // logo
       max-content     // catalog
       1fr             // search (растягивается)
-      auto            // nav
       auto            // contacts
-      auto;           // badge
+      52px;           // badge
     align-items: center;
     column-gap: 24px;
   }
@@ -128,6 +130,7 @@ $radius-m: 8px;
     border: 1px solid $color-border; border-radius: $radius-m; background: #fff;
   }
   &__search_input {
+    background: none;
     width: 100%; height: 100%;
     padding: 0 48px 0 16px;
     border: 0; outline: none;
@@ -147,13 +150,15 @@ $radius-m: 8px;
     display: flex; align-items: center; gap: 22px; list-style: none; padding: 0; margin: 0;
   }
   &__menu_item {
+    margin-top: 0;
+    padding-left: 0;
     a {
       display: inline-flex; align-items: center; gap: 6px;
       text-decoration: none; color: $color-text; font-size: 15px; white-space: nowrap;
     }
     &--caret a::after {
       content: ""; width: 6px; height: 6px; border-right: 1.6px solid currentColor; border-bottom: 1.6px solid currentColor;
-      transform: rotate(45deg); margin-top: 2px; opacity: .85;
+      transform: rotate(45deg); margin-top: 0px; opacity: .85;
     }
     a:hover { color: #444; }
   }
@@ -173,7 +178,7 @@ $radius-m: 8px;
   }
 
   // badge/emblem
-  &__badge img { height: 46px; display: block; }
+  &__badge img { width: 100%; display: block; }
 
   // ------- responsive -------
   @media (max-width: 1280px) {
@@ -222,7 +227,7 @@ $radius-m: 8px;
         font-size: 16px;
         color: #1e1e1e;
         text-decoration: none;
-        padding: 25px 40px;
+        padding: 16px;
         background-color: #BF2F4D;
         cursor: pointer;
         .icon {
@@ -263,11 +268,11 @@ $radius-m: 8px;
         }
     }
     &__menu_in {
-        padding: 40px;
+        padding: 24px;
         display: grid;
         grid-template-columns: 316px 1fr;
         grid-gap: 20px;
-        max-width: 1404px;
+        max-width: 1324px;
         margin: 0 auto;
     }
     &__menu_left {
